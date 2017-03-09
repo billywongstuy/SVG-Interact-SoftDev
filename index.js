@@ -68,6 +68,7 @@ var removeCircle = function(c,e) {
 -------------------*/
 
 var interval;
+var speed = 2;
 
 var move = function(e) {
     var children = pic.children;
@@ -89,10 +90,8 @@ var move = function(e) {
 	var yDir = parseFloat(children[i].getAttribute("yDir"));
 	var radius = parseFloat(children[i].getAttribute("r"));
 	
-	x += xDir;
-	y += yDir;
-
-	
+	x += (xDir*speed);
+	y += (yDir*speed);
 	
 	if (x <= 0+radius || x >= pic.width.baseVal.value-radius) {
 	    children[i].setAttribute("xDir",(-xDir.toString()));
@@ -107,10 +106,10 @@ var move = function(e) {
     }
 };
 
+
 var moveStart = function(e) {
     interval = setInterval(move,10);
 };
-
 
 
 /*----------------
